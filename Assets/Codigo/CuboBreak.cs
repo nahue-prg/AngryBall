@@ -43,8 +43,9 @@ public class CuboBreak : MonoBehaviour
                                 GameObject smallCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                                 smallCube.transform.position = originalPosition + new Vector3(x * newCubeScale, y * newCubeScale, z * newCubeScale);
                                 smallCube.transform.localScale = Vector3.one * newCubeScale;
+                                
                                 smallCube.AddComponent<DestroyAfterTime>();
-                                smallCube.AddComponent<BloqueRoto>();
+                                smallCube.AddComponent<CuboBreak>();
 
                                 // Agregar rigidbody y aplicar una fuerza de explosión
                                 Rigidbody rb = smallCube.AddComponent<Rigidbody>();
