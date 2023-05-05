@@ -7,14 +7,13 @@ I wish you the best for your project. Good luck!
 P.S: If you need more cars, you can check my other vehicle assets on the Unity Asset Store, perhaps you could find
 something useful for your game. Best regards, Mena.
 */
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PrometeoCarController : MonoBehaviour
+public class CarControllerRed : MonoBehaviour
 {
 
     //CAR SETUP
@@ -338,7 +337,6 @@ public class PrometeoCarController : MonoBehaviour
         }
         else if(!Input.GetKey(KeyCode.S))
         {
-            //TODO: Que el sonido se desvanezca y no se corte de golpe
             carEngineSound.Stop();
 
         }
