@@ -30,8 +30,11 @@ public class Cañon: MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
+      
+
         rotX += mouseX * sensibilidadX;
         rotY -= mouseY * sensibilidadY;
+        rotY = Mathf.Clamp(rotY, -14f, 10f); // limita la rotación en el eje Y a -10 grados y 20 grados
         //Debug.Log(limitex+ " X :" + mouseX + " | Y :" + mouseY);
         //Debug.Log(limitex + " TRANSOFRM :" + transform.rotation+ " | CAÑON :" + cañon.rotation);
         //rotX = Mathf.Clamp(rotX, -45f, 45f);

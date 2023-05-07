@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 public class CarControllerRed : MonoBehaviour
 {
-
+    public float fadeTime = 3.0f;
     //CAR SETUP
 
       [Space(20)]
@@ -218,8 +218,9 @@ public class CarControllerRed : MonoBehaviour
           InvokeRepeating("CarSounds", 0f, 0.1f);
         }else if(!useSounds){
           if(carEngineSound != null){
-            carEngineSound.Stop();
-          }
+            //carEngineSound.Stop();
+                StartCoroutine(FadeOut(carEngineSound, fadeTime));
+            }
           if(tireScreechSound != null){
             tireScreechSound.Stop();
           }
@@ -337,7 +338,8 @@ public class CarControllerRed : MonoBehaviour
         }
         else if(!Input.GetKey(KeyCode.S))
         {
-            carEngineSound.Stop();
+
+            StartCoroutine(FadeOut(carEngineSound, fadeTime));
 
         }
         if(Input.GetKey(KeyCode.S)){
@@ -351,7 +353,7 @@ public class CarControllerRed : MonoBehaviour
          }
          else if (!Input.GetKey(KeyCode.W))
          {
-             carEngineSound.Stop();
+             StartCoroutine(FadeOut(carEngineSound, fadeTime));
 
          }
 
@@ -428,8 +430,9 @@ public class CarControllerRed : MonoBehaviour
         }
       }else if(!useSounds){
         if(carEngineSound != null && carEngineSound.isPlaying){
-          carEngineSound.Stop();
-        }
+          //carEngineSound.Stop();
+           StartCoroutine(FadeOut(carEngineSound, fadeTime));
+            }
         if(tireScreechSound != null && tireScreechSound.isPlaying){
           tireScreechSound.Stop();
         }
@@ -789,5 +792,19 @@ public class CarControllerRed : MonoBehaviour
         driftingAxis = 0f;
       }
     }
+
+    public IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / fadeTime;
+
+            yield return null;
+        }
+    }
+
+
 
 }
